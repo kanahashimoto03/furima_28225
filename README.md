@@ -12,9 +12,7 @@
 | last_name               | string   | null: false |
 | family_name_reading     | string   | null: false |
 | last_name_reading       | string   | null: false |
-| birth_year              | date     | null: false |
-| birth_month             | date     | null: false |
-| birth_date              | date     | null: false |
+| birthday                | date     | null: false |
 
 ### Association
 
@@ -47,7 +45,7 @@
 
 | Column          | Type       | Options                        |
 | ------          | ---------- | ------------------------------ |
-| comment         | text       | null: false, foreign_key: true |
+| comment         | text       | null: false |
 | user            | references | null: false, foreign_key: true |
 | item            | references | null: false, foreign_key: true |
 
@@ -73,13 +71,11 @@
 
 - belongs_to :item
 
-## order_history テーブル
+## order_histories テーブル
 
 | Column                  | Type       | Options     |
 | --------                | ------     | ----------- |
-| price                   | integer    | null: false |
-| chekcked                | boolean    | null: false |
-| user                    | references | null: false |
+| user                    | references | null: false, foreign_key: true |
 | item                    | references | null: false, foreign_key: true |
 
 ### Association
