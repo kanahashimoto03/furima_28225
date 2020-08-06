@@ -2,17 +2,19 @@
 
 ## users テーブル
 
-| Column                  | Type   | Options     |
-| --------                | ------ | ----------- |
-| nickname                | string | null: false |
-| email                   | string | null: false |
-| password                | string | null: false |
-| password_confirmation   | string | null: false |
-| family_name             | string | null: false |
-| last_name               | string | null: false |
-| family_name_reading     | string | null: false |
-| last_name_reading       | string | null: false |
-| birthday                | string | null: false |
+| Column                  | Type     | Options     |
+| --------                | ------   | ----------- |
+| nickname                | string   | null: false |
+| email                   | string   | null: false |
+| password                | string   | null: false |
+| password_confirmation   | string   | null: false |
+| family_name             | string   | null: false |
+| last_name               | string   | null: false |
+| family_name_reading     | string   | null: false |
+| last_name_reading       | string   | null: false |
+| birth_year              | date     | null: false |
+| birth_month             | date     | null: false |
+| birth_date              | date     | null: false |
 
 ### Association
 
@@ -55,7 +57,7 @@
 - belongs_to :item
 
 
-## order_adress テーブル
+## order_adresses テーブル
 
 | Column                  | Type       | Options     |
 | --------                | ------     | ----------- |
@@ -76,10 +78,13 @@
 | Column                  | Type       | Options     |
 | --------                | ------     | ----------- |
 | price                   | integer    | null: false |
+| chekcked                | boolean    | null: false |
+| user                    | references | null: false |
 | item                    | references | null: false, foreign_key: true |
 
 ### Association
 
+- belongs_to :user
 - belongs_to :item
 
 
