@@ -24,7 +24,7 @@
 
 | Column                  | Type        | Options     |
 | --------                | ------      | ----------- |
-| item_name               | string      | null: false |
+| name                    | string      | null: false |
 | item_description        | text        | null: false |
 | item_category_id        | integer     | null: false |
 | item_condition_id       | integer     | null: false |
@@ -60,7 +60,7 @@
 
 | Column                  | Type       | Options     |
 | --------                | ------     | ----------- |
-| postal_code             | integer    | null: false |
+| postal_code             | string     | null: false |
 | prefecture_id           | integer    | null: false |
 | city                    | string     | null: false |
 | house_number            | string     | null: false |
