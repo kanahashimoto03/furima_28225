@@ -8,30 +8,29 @@
 | email                   | string | null: false |
 | password                | string | null: false |
 | password_confirmation   | string | null: false |
-| name                    | string | null: false |
-| name_reading            | string | null: false |
+| family_name             | string | null: false |
+| last_name               | string | null: false |
+| family_name_reading     | string | null: false |
+| last_name_reading       | string | null: false |
 | birthday                | string | null: false |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_many :order_adress
-- has_one  :credit_card
 
 ## items テーブル
 
 | Column                  | Type        | Options     |
 | --------                | ------      | ----------- |
-| item_image              | string      | null: false |
 | item_name               | string      | null: false |
 | item_description        | text        | null: false |
-| item_category           | string      | null: false |
-| item_condition          | string      | null: false |
-| shipping_charge         | string      | null: false |
-| shipping_area           | string      | null: false |
-| delivery_time           | string      | null: false |
-| item_price              | string      | null: false |
+| item_category_id        | string      | null: false |
+| item_condition_id       | string      | null: false |
+| shipping_charge_id      | integer     | null: false |
+| shipping_area_id        | integer     | null: false |
+| delivery_time_id        | integer     | null: false |
+| item_price              | integer     | null: false |
 | user                    | references  | null: false , foreign_key: true|
 
 
@@ -54,21 +53,19 @@
 - belongs_to :user
 - belongs_to :item
 
-## credit_card テーブル
+## favorites テーブル
 
-| Column                  | Type        | Options     |
-| --------                | ------      | ----------- |
-| card_number             | integer     | null: false |
-| expire_year             | integer     | null: false |
-| expire_month            | integer     | null: false |
-| security_code           | integer     | null: false |
-| user                    | references  | null: false, foreign_key: true |
-| order_adress            | references  | null: false, foreign_key: true |
+| Column          | Type       | Options                        |
+| ------          | ---------- | ------------------------------ |
+| favorite        | integer    | 
+| user            | references | null: false, foreign_key: true |
+| item            | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :order_adress
+- belongs_to :item
+
 
 ## order_adress テーブル
 
@@ -80,11 +77,8 @@
 | house_number            | string     | null: false |
 | building_name           | string     |
 | phone_number            | string     | null: false |
-| user                    | references | null: false, foreign_key: true |
 | item                    | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :user
 - belongs_to :item
-- has_one    :credit_card
