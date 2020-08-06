@@ -25,8 +25,8 @@
 | --------                | ------      | ----------- |
 | item_name               | string      | null: false |
 | item_description        | text        | null: false |
-| item_category_id        | string      | null: false |
-| item_condition_id       | string      | null: false |
+| item_category_id        | integer     | null: false |
+| item_condition_id       | integer     | null: false |
 | shipping_charge_id      | integer     | null: false |
 | shipping_area_id        | integer     | null: false |
 | delivery_time_id        | integer     | null: false |
@@ -39,6 +39,7 @@
 - belongs_to :user
 - has_many :comments
 - has_one :order_adress
+- has_one :order_history
 
 ## comments テーブル
 
@@ -53,26 +54,13 @@
 - belongs_to :user
 - belongs_to :item
 
-## favorites テーブル
-
-| Column          | Type       | Options                        |
-| ------          | ---------- | ------------------------------ |
-| favorite        | integer    | 
-| user            | references | null: false, foreign_key: true |
-| item            | references | null: false, foreign_key: true |
-
-### Association
-
-- belongs_to :user
-- belongs_to :item
-
 
 ## order_adress テーブル
 
 | Column                  | Type       | Options     |
 | --------                | ------     | ----------- |
 | postal_code             | integer    | null: false |
-| prefecture              | string     | null: false |
+| prefecture_id           | integer    | null: false |
 | city                    | string     | null: false |
 | house_number            | string     | null: false |
 | building_name           | string     |
@@ -82,3 +70,16 @@
 ### Association
 
 - belongs_to :item
+
+## order_history テーブル
+
+| Column                  | Type       | Options     |
+| --------                | ------     | ----------- |
+| price                   | integer    | null: false |
+| item                    | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+
+
