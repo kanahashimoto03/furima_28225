@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.create
   end
 
+  def destroy
+
+  end
+
 
 
 end
