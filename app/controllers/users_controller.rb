@@ -9,12 +9,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create
+    if @user.valid?
+      @user.save
+      redirect_to root_path
+    else
+      render 'new'   
+    end
   end
 
   def destroy
   end
 
-  
+
 
 
 end
