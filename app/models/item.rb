@@ -12,11 +12,11 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :item_description
-    validates :delivery_time
-    validates :item_category
-    validates :item_condition
-    validates :shipping_area
-    validates :shipping_charge
+    validates :delivery_time_id
+    validates :item_category_id
+    validates :item_condition_id
+    validates :shipping_area_id
+    validates :shipping_charge_id
     validates :item_price
   end
 
@@ -28,8 +28,9 @@ class Item < ApplicationRecord
     validates :shipping_charge_id
   end
 
-  validates :item_price, numericality: { greater_than: 300, less_than: 9999999 }
+  validates :item_price, numericality: { greater_than: 300, less_than: 9999999, message:'is out of Range' }
 
   belongs_to :user
 
 end
+ 
