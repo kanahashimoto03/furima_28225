@@ -20,7 +20,7 @@ class Item < ApplicationRecord
     validates :item_price
   end
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: 'Select' } do
     validates :delivery_time_id
     validates :item_category_id
     validates :item_condition_id
