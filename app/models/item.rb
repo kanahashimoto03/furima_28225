@@ -28,9 +28,7 @@ class Item < ApplicationRecord
     validates :shipping_charge_id
   end
 
-  validates :item_price, numericality: { greater_than: 300, less_than: 9999999, message:'is out of Range' }
+  validates :item_price, numericality: { greater_than: 300, less_than: 9_999_999, message: 'is out of Range' }
 
   belongs_to :user
-
 end
- 
