@@ -1,0 +1,5 @@
+class OrderHistoriesController < ApplicationController
+
+
+
+end
