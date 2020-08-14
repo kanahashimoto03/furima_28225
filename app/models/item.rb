@@ -31,4 +31,5 @@ class Item < ApplicationRecord
   validates :item_price, numericality: { greater_than: 300, less_than: 9_999_999, message: 'is out of Range' }
 
   belongs_to :user
+  has_one :order_history
 end

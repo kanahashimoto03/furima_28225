@@ -27,4 +27,5 @@ class User < ApplicationRecord
   validates :password, format: { with: PASSWORD_REGEX, message: 'Include both letters and numbers' }
 
   has_many :items
+  has_one :order_history
 end
