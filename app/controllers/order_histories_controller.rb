@@ -4,11 +4,15 @@ class OrderHistoriesController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
+  def new
+    @order = Order.new
+  end
+
   def create 
-    @order_history = OrderHistory.new(order_history_params)
-    if @order_history.valid?
+    @order = Order.new(order_history_params)
+    if @order.valid?
       pay_item
-      @order_history.save
+      @order.save
       return redirect_to root_path
     else
       @item = Item.find(params[:item_id])
@@ -19,7 +23,7 @@ class OrderHistoriesController < ApplicationController
   private
 
   def order_history_params
-    params.permit().merge(user_id: current_user.id,item_id: params[:item_id])
+    params.permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id]) 
   end
 
   def pay_item
