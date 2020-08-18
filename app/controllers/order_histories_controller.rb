@@ -1,22 +1,20 @@
 class OrderHistoriesController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @item = Item.find(params[:item_id])
-  end
-
-  def new
     @order = Order.new
   end
 
   def create 
+    @item = Item.find(params[:item_id])
     @order = Order.new(order_history_params)
     if @order.valid?
       pay_item
       @order.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
-      render 'index'
+      render :index
     end
   end
 
@@ -29,7 +27,7 @@ class OrderHistoriesController < ApplicationController
   def pay_item
     Payjp.api_key = "sk_test_f886e5be26642cddd41ad22a"
     Payjp::Charge.create(
-      amount: 999, 
+      amount: @item.item_price, 
       card: params[:token],
       currency:'jpy'
     )
