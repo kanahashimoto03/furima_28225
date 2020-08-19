@@ -3,6 +3,9 @@ class OrderHistoriesController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
+    if @item.user_id = current_user.id
+      redirect_to root_path
+    end
     @order = Order.new
   end
 
