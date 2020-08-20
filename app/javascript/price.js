@@ -11,7 +11,7 @@ window.addEventListener('load', function(){
     const tax = itemprice * 0.1;
     console.log(tax)
     taxprice.innerHTML = Math.round(tax)
-    profit.innerHTML = taxprice.innerHTML
+    profit.innerHTML = itemprice-taxprice.innerHTML
 
   })
 })
