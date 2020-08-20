@@ -3,7 +3,7 @@ class OrderHistoriesController < ApplicationController
   before_action :set_item, only: [:index, :create]
 
   def index
-    if @item.user_id == current_user.id
+    if @item.order_history.present? or @item.user_id == current_user.id
       redirect_to root_path
     end
     @order = Order.new
